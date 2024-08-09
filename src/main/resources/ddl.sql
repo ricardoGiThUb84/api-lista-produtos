@@ -1,0 +1,11 @@
+create table item_lista (id bigint not null auto_increment, preco decimal(19,2) not null, quantidade integer not null, id_lista bigint not null, id_produto bigint not null, primary key (id)) engine=InnoDB;
+create table lista (id bigint not null auto_increment, descricao varchar(255) not null, preco decimal(19,2) not null, usuario_id bigint not null, primary key (id)) engine=InnoDB;
+create table produto (id bigint not null auto_increment, condicao varchar(255) not null, descricao varchar(255) not null, porcentagem decimal(19,2) not null, preco decimal(19,2) not null, preco_desconto decimal(19,2) not null, primary key (id)) engine=InnoDB;
+create table roles (id bigint not null auto_increment, role varchar(255), primary key (id)) engine=InnoDB;
+create table usuario (id bigint not null auto_increment, cpf varchar(255), nome varchar(255), senha varchar(255), username varchar(255), primary key (id)) engine=InnoDB;
+create table usuario_roles (usuario_id bigint not null, roles_id bigint not null) engine=InnoDB;
+alter table item_lista add constraint FKs7bkpl4vvcjfn15ujcrve4g7 foreign key (id_lista) references lista (id);
+alter table item_lista add constraint FKj9ftw443ifwrmv0h5un34bwuo foreign key (id_produto) references produto (id);
+alter table lista add constraint FKdgetq5bx3i6evdsifm9u6s1si foreign key (usuario_id) references usuario (id);
+alter table usuario_roles add constraint FK45th3jgtqendsla8q3q1h02rt foreign key (roles_id) references roles (id);
+alter table usuario_roles add constraint FKqblnumndby0ftm4c7sg6uso6p foreign key (usuario_id) references usuario (id);
