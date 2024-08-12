@@ -1,5 +1,6 @@
 package com.api.lista_produtos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -29,8 +30,8 @@ public class Lista {
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "lista")
     private List<ItemLista> itensLista = new ArrayList<>();
-
 
 }

@@ -1,6 +1,7 @@
 package com.api.lista_produtos.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,6 +28,7 @@ public class Usuario {
 
     private String cpf;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     private List<Lista> listas;
 

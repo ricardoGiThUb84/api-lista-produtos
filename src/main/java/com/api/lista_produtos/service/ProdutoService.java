@@ -17,6 +17,36 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository;
 
 
+    public List<Produto> buscarProdutos(){
+
+        return produtoRepository.findAll();
+
+    }
+
+
+    public List<Produto> buscarProdutosPorNomeEmarca(
+            String nome){
+
+        return produtoRepository
+                .buscarProdutosPorNome(nome);
+
+    }
+
+    public Produto buscarProdutosPorId(Long id){
+
+        return produtoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+    }
+
+//    public List<Produto> buscarProdutosPorNomeEmarca(
+//            String nome , String marca, String quantidade){
+//
+//        return produtoRepository
+//                .buscarProdutosPorNome_Marca_Quantidade(nome,marca, quantidade);
+//
+//    }
+
     @Transactional
     public void salvarLote(List<Produto> prdutos){
 

@@ -34,5 +34,20 @@ public class ItemLista {
     @JoinColumn(name = "id_produto", nullable = false)
     private Produto produto;
 
+    public void inserirProdutoLista(Produto produto, Lista lista, Integer quantidade){
+
+        this.setLista(lista);
+        this.setProduto(produto);
+        this.setQuantidade(quantidade);
+    }
+
+    public void atualizaPreco(){
+
+        this.setPreco(
+                new BigDecimal(
+                        String.valueOf(this.getProduto().getPrecoDesconto()))
+                        .multiply(BigDecimal.valueOf(this.getQuantidade()))
+        );
+    }
 
 }
